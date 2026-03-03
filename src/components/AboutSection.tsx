@@ -12,7 +12,6 @@ const fadeUp = {
 const AboutSection = () => {
   return (
     <section id="about" className="relative">
-      {/* Church / Vow */}
       <div className="section-padding bg-background">
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeUp} className="text-center mb-12">
@@ -34,8 +33,9 @@ const AboutSection = () => {
               <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">🎉 Aberto a todos</span>
             </div>
           </motion.div>
+        </div>
+      </div>
 
-      {/* Party / Club */}
       <div className="relative section-padding overflow-hidden">
         <div className="absolute inset-0">
           <img src={partyBg} alt="Festa" className="w-full h-full object-cover" />
