@@ -16,20 +16,8 @@ type GiftItem = {
   cotaValue?: number;
 };
 
-const emojiMap: Record<string, string> = {
-  geladeira: "🧊",
-  "kimono do noivo": "🥋",
-  "cabelo da noiva": "💇‍♀️",
-  "lua de mel": "✈️",
-  "enxoval da vick": "👶",
-  "decoração do apê": "🏠",
-};
-
 function getEmoji(name: string): string {
   const lower = name.toLowerCase();
-  for (const [key, emoji] of Object.entries(emojiMap)) {
-    if (lower.includes(key)) return emoji;
-  }
   return "🎁";
 }
 
@@ -107,8 +95,8 @@ const GiftRegistry = () => {
   const handleConfirmAndSubmit = async () => {
     if (!nome.trim() || !selectedGift || !selectedGift.cotaValue) return;
 
-    setShowConfirm(false);
     setSubmitting(true);
+    setShowConfirm(false);
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
@@ -263,7 +251,7 @@ const GiftRegistry = () => {
                     Fechar
                   </button>
                 </div>
-              ) : showConfirm ? (
+              ) : (showConfirm || submitting) ? (
                 /* Confirmation popup */
                 <div className="text-center py-4 space-y-4">
                   <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto">
