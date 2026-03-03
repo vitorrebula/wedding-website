@@ -35,26 +35,6 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          {/* Fun facts */}
-          <motion.div {...fadeUp} className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card rounded-xl border border-border p-6">
-              <h4 className="font-display text-lg font-semibold text-foreground mb-2">Lucas 🥊</h4>
-              <p className="font-body text-sm text-muted-foreground">
-                Fã de Naruto e Pokémon, praticante de boxe, jiu-jitsu e vôlei. 
-                Um guerreiro dentro e fora das quadras!
-              </p>
-            </div>
-            <div className="bg-card rounded-xl border border-border p-6">
-              <h4 className="font-display text-lg font-semibold text-foreground mb-2">Rafaela 🏐</h4>
-              <p className="font-body text-sm text-muted-foreground">
-                Apaixonada por vôlei e beach tennis. Energia, força e determinação — 
-                a dupla perfeita para o Lucas!
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
       {/* Party / Club */}
       <div className="relative section-padding overflow-hidden">
         <div className="absolute inset-0">
