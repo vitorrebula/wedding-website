@@ -6,7 +6,7 @@ const VideoSection = () => {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="section-padding bg-card">
+    <section className="section-padding bg-card" id="video">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
