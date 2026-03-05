@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxs4qar-Gh1GJpJj0nKv63lhjVZvF6YcYSyJcpbgR2jggNK03LoduIKWB6XuLMEOT0CwA/exec";
+"https://script.google.com/macros/s/AKfycbzn47bMFlKbfJwscuCrN5DHAIAd9GsOfNmjo94SAMNM4t_QOeti0CWKiINehsD3vjW4mA/exec"
 
 const PIX_KEY = "lucas.rafaela@pix.com";
 
