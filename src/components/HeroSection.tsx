@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
-import heroBg from "@/assets/hero-wedding.jpg";
+import heroBg from "@/assets/lucs-e-rafa-2.jpeg";
 
 const WEDDING_DATE = new Date("2026-09-19T16:00:00");
 
@@ -28,7 +28,7 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Cenário de casamento" className="w-full h-full object-cover" />
+        <img src={heroBg} alt="Cenário de casamento" className="w-full h-full object-cover grayscale-20 brightness-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
       </div>
 
@@ -38,20 +38,20 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-foreground leading-tight"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-white leading-tight"
         >
-          Lucas
           <span className="inline-flex items-center mx-3 md:mx-5">
-            <Heart className="w-7 h-7 md:w-10 md:h-10 text-blush-dark fill-blush" />
-          </span>
+          Lucas
+            &
           Rafaela
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="mt-5 font-body text-sm tracking-[0.25em] text-muted-foreground uppercase"
+          className="mt-5 font-body text-sm tracking-[0.25em] text-white uppercase"
         >
           19 · 09 · 2026
         </motion.p>
@@ -68,7 +68,7 @@ const HeroSection = () => {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-card/80 backdrop-blur-sm border border-gold-light/30 flex items-center justify-center shadow-lg">
                 <span className="font-display text-2xl md:text-3xl font-bold text-foreground">{value}</span>
               </div>
-              <span className="mt-2 block text-xs font-body uppercase tracking-wider text-muted-foreground">
+              <span className="mt-2 block text-xs font-body uppercase tracking-wider text-white">
                 {label}
               </span>
             </div>
