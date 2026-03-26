@@ -28,8 +28,8 @@ const AboutSection = () => {
               família e amigos. Uma celebração tradicional, cheia de amor e emoção.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">19/09/2026</span>
-              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">16h00</span>
+              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">30/05/2026</span>
+              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">19h00</span>
               <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">Aberto a todos</span>
             </div>
           </motion.div>
