@@ -4,7 +4,8 @@ import { Gift, X, Copy, Check, Loader2, Send, AlertTriangle } from "lucide-react
 import { Input } from "@/components/ui/input";
 
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxs4qar-Gh1GJpJj0nKv63lhjVZvF6YcYSyJcpbgR2jggNK03LoduIKWB6XuLMEOT0CwA/exec";
-const PIX_KEY = "lucas.rafaela@pix.com"; // Replace
+const PIX_KEY = "lucas.rafaela@pix.com";
+const API_URL = "https://wedding-website-mpek.onrender.com";
 
 type GiftItem = {
   id: number;
@@ -42,7 +43,9 @@ const GiftRegistry = () => {
   const [nome, setNome] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+
+  const [lastPaymentLink, setLastPaymentLink] = useState<string | null>(null);
+  const [openingPayment, setOpeningPayment] = useState(false);
 
   const fetchGifts = useCallback(async () => {
     try {
@@ -93,12 +96,16 @@ const GiftRegistry = () => {
     if (!nome.trim() || !selectedGift || !selectedGift.cotaValue) return;
 
     setSubmitting(true);
-    setShowConfirm(false);
+
+    // 🔥 cria aba antecipadamente (evita bloqueio)
+    const newTab = window.open("", "_blank");
+
     try {
-      await fetch(APPS_SCRIPT_URL, {
+      const response = await fetch(`${API_URL}/create-payment`, {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           pessoa: nome.trim(),
           presente: selectedGift.title,
@@ -106,11 +113,36 @@ const GiftRegistry = () => {
         }),
       });
 
-      setSubmitSuccess(true);
-      setNome("");
-      setTimeout(() => fetchGifts(), 2000);
+      const data = await response.json();
+
+      if (data?.paymentUrl || data?.url) {
+        const paymentLink = data.paymentUrl || data.url;
+
+        setLastPaymentLink(paymentLink);
+        setOpeningPayment(true);
+
+        // 🔥 redireciona a aba criada
+        if (newTab) {
+          newTab.location.href = paymentLink;
+        } else {
+          // fallback
+          window.open(paymentLink, "_blank");
+        }
+
+        // pequeno delay só pra UX ficar mais natural
+        setTimeout(() => {
+          setSubmitSuccess(true);
+          setOpeningPayment(false);
+        }, 800);
+
+        return;
+      }
+
+      throw new Error("Link não retornado");
     } catch (err) {
-      console.error("Erro ao enviar:", err);
+      console.error(err);
+      if (newTab) newTab.close();
+      alert("Erro ao gerar pagamento 😢");
     } finally {
       setSubmitting(false);
     }
@@ -119,14 +151,12 @@ const GiftRegistry = () => {
   const openModal = (gift: GiftItem) => {
     setSelectedGift(gift);
     setSubmitSuccess(false);
-    setShowConfirm(false);
     setNome("");
   };
 
   const closeModal = () => {
     setSelectedGift(null);
     setSubmitSuccess(false);
-    setShowConfirm(false);
   };
 
   return (
@@ -137,7 +167,7 @@ const GiftRegistry = () => {
           <h2 className="mt-2 font-display text-4xl md:text-5xl font-semibold text-foreground">Presenteie o Casal</h2>
           <div className="mt-4 w-16 h-px bg-gold mx-auto" />
           <p className="mt-4 font-body text-muted-foreground max-w-lg mx-auto">
-            Contribua via PIX para ajudar Lucas & Rafa a realizarem seus sonhos juntos 💛
+            Contribua via PIX para ajudar Lucas & Rafa a realizarem seus sonhos juntos
           </p>
         </motion.div>
 
@@ -228,16 +258,24 @@ const GiftRegistry = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
+              style={{position: "relative", borderRadius: "0 !important"}}
               onClick={(e) => e.stopPropagation()}
-              className="bg-card rounded-2xl border border-border p-8 max-w-md w-full shadow-xl max-h-[90vh] overflow-y-auto"
+              className="bg-card border border-border p-8 max-w-md w-full shadow-xl max-h-[90vh] overflow-y-auto"
             >
-              <div className="flex justify-between items-start mb-6">
-                <div>
+
+            <button style={{position: "absolute", right: "10px", top: "10px"}} onClick={closeModal} className="text-muted-foreground hover:text-foreground">
+              <X className="w-5 h-5" />
+            </button>
+            {!submitSuccess && (
+
+              <div className="flex items-start mb-6" style={{flexDirection: 'column-reverse', width: '100%'}}>
+                <div style={{width: '100%'}}>
                   {selectedGift.imageUrl ? (
                     <img
+                      style={{height: "200px"}}
                       src={selectedGift.imageUrl}
                       alt={selectedGift.title}
-                      className="w-full h-40 object-cover rounded-xl mb-3"
+                      className="w-full object-cover rounded-xl mb-3"
                     />
                   ) : (
                     <div className="text-3xl mb-3">🎁</div>
@@ -249,77 +287,52 @@ const GiftRegistry = () => {
                     </p>
                   ) : null}
                 </div>
-                <button onClick={closeModal} className="text-muted-foreground hover:text-foreground">
-                  <X className="w-5 h-5" />
-                </button>
               </div>
+            )}
 
-              {submitSuccess ? (
-                <div className="text-center py-6">
-                  <div className="text-5xl mb-4">🎉</div>
-                  <h4 className="font-display text-lg font-semibold text-foreground mb-2">Obrigado pelo presente!</h4>
+            {(submitting || openingPayment) ? (
+              <div className="text-center py-6 space-y-4">
+                <Loader2 className="w-8 h-8 animate-spin text-gold mx-auto" />
+
+                <h4 className="font-display text-lg font-semibold text-foreground">
+                  Gerando seu link...
+                </h4>
+
+                <p className="font-body text-sm text-muted-foreground">
+                  Estamos preparando seu pagamento com segurança 💛
+                </p>
+              </div>
+              ): submitSuccess ? (
+                <div className="text-center py-6 space-y-4">
+
+                  <h4 className="font-display text-lg font-semibold text-foreground">
+                    Tudo pronto!
+                  </h4>
+
                   <p className="font-body text-sm text-muted-foreground">
-                    Seu pagamento foi registrado. Lucas & Rafa agradecem de coração! 💛
+                    Abrimos o link de pagamento em uma nova aba para você finalizar com segurança.
+                    <br /><br />
+                    Assim que concluir, o presente será registrado para o casal
                   </p>
+
+                  {lastPaymentLink && (
+                    <button
+                      onClick={() => window.open(lastPaymentLink, "_blank")}
+                      className="w-full py-2.5 rounded-lg border border-border font-body font-semibold text-sm hover:bg-secondary transition-colors"
+                    >
+                      Abrir link novamente
+                    </button>
+                  )}
+
                   <button
                     onClick={closeModal}
-                    className="mt-6 px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity"
+                    className="w-full py-2.5 rounded-lg bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity"
                   >
                     Fechar
                   </button>
                 </div>
-              ) : (showConfirm || submitting) ? (
-                /* Confirmation popup */
-                <div className="text-center py-4 space-y-4">
-                  <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto">
-                    <AlertTriangle className="w-7 h-7 text-gold" />
-                  </div>
-                  <h4 className="font-display text-lg font-semibold text-foreground">Confirmar envio</h4>
-                  <p className="font-body text-sm text-muted-foreground">
-                    Você confirma que já enviou o PIX de{" "}
-                    <strong className="text-foreground">
-                      R$ {selectedGift.cotaValue?.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-                    </strong>{" "}
-                    para o presente <strong className="text-foreground">{selectedGift.title}</strong>?
-                  </p>
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => setShowConfirm(false)}
-                      className="flex-1 py-2.5 rounded-lg border border-border font-body font-semibold text-sm text-muted-foreground hover:bg-secondary transition-colors"
-                    >
-                      Voltar
-                    </button>
-                    <button
-                      onClick={handleConfirmAndSubmit}
-                      disabled={submitting}
-                      className="flex-1 py-2.5 rounded-lg bg-gold text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50"
-                    >
-                      {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
-                      {submitting ? "Enviando..." : "Sim, enviei!"}
-                    </button>
-                  </div>
-                </div>
-              ) : (
+                ) : (
                 <div className="space-y-5">
-                  <p className="font-body text-sm text-muted-foreground text-center">
-                    Faça um PIX de{" "}
-                    <strong className="text-foreground">
-                      R$ {selectedGift.cotaValue?.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-                    </strong>{" "}
-                    e confirme abaixo:
-                  </p>
-
-                  {/* PIX Key */}
-                  <div className="flex items-center gap-2 bg-secondary rounded-lg p-3">
-                    <code className="flex-1 text-sm font-body text-foreground truncate">{PIX_KEY}</code>
-                    <button
-                      onClick={handleCopy}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {copied ? <Check className="w-4 h-4 text-sage" /> : <Copy className="w-4 h-4" />}
-                    </button>
-                  </div>
-
                   {/* Name only */}
                   <div>
                     <label className="block text-xs font-body text-muted-foreground mb-1">Seu nome</label>
@@ -340,17 +353,13 @@ const GiftRegistry = () => {
                   </div>
 
                   <button
-                    onClick={() => setShowConfirm(true)}
-                    disabled={!nome.trim()}
-                    className="w-full py-3 rounded-lg bg-gold text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      onClick={handleConfirmAndSubmit}
+                      disabled={submitting}
+                      className="w-full py-3 rounded-lg bg-gold text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" />
-                    Já enviei o PIX
+                    Gerar link de pagamento
                   </button>
-
-                  <p className="text-xs font-body text-muted-foreground text-center">
-                    Ao confirmar, seu presente será registrado automaticamente na planilha do casal.
-                  </p>
                 </div>
               )}
             </motion.div>
