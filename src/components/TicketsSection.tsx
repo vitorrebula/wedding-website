@@ -20,21 +20,13 @@ const tickets = [
     variant: "classic" as const,
   },
   {
-    title: "Cerimônia + Festa",
-    price: "R$ —",
-    icon: PartyPopper,
-    description: "O pacote completo!",
-    features: ["Cerimônia na Igreja", "Open Bar", "Open Food", "DJ & Pista de dança"],
-    variant: "featured" as const,
-    badge: "Mais popular",
-  },
-  {
     title: "Apenas Festa",
     price: "R$ —",
     icon: Ticket,
     description: "Direto pra balada",
     features: ["Open Bar", "Open Food", "DJ & Pista de dança"],
     variant: "club" as const,
+    badge: "OSS"
   },
 ];
 
@@ -51,27 +43,25 @@ const TicketsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{display: "flex", justifyContent: "center"}}>
           {tickets.map((t, i) => {
             const Icon = t.icon;
             const isClub = t.variant === "club";
-            const isFeatured = t.variant === "featured";
 
             return (
               <motion.div
                 key={t.title}
                 {...fadeUp}
+                style={{width: "300px"}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 className={`relative rounded-2xl p-8 text-center border transition-transform hover:scale-[1.02] ${
-                  isFeatured
-                    ? "bg-card border-gold shadow-lg scale-[1.02]"
-                    : isClub
-                    ? "bg-club-dark border-neon-pink/20"
+                  isClub
+                    ? "bg-club-dark border-neon-pink scale-[1.02]"
                     : "bg-card border-border"
                 }`}
               >
                 {t.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gold text-primary-foreground text-xs font-body font-semibold">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-neon-pink text-primary-foreground text-xs font-body font-semibold">
                     {t.badge}
                   </span>
                 )}
@@ -99,10 +89,7 @@ const TicketsSection = () => {
                   href={EXTERNAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-block w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${
-                    isFeatured
-                      ? "bg-primary text-primary-foreground hover:opacity-90"
-                      : isClub
+                  className={`inline-block w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${ isClub
                       ? "bg-neon-pink text-club-dark hover:opacity-90"
                       : "bg-secondary text-secondary-foreground hover:bg-accent"
                   }`}

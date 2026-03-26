@@ -116,7 +116,7 @@ const GiftRegistry = () => {
       const data = await response.json();
 
       if (data?.paymentUrl || data?.url) {
-        const paymentLink = data.paymentUrl || data.url;
+        const paymentLink = data.url ?? data.paymentUrl;
 
         setLastPaymentLink(paymentLink);
         setOpeningPayment(true);
