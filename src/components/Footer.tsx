@@ -9,7 +9,7 @@ const Footer = () => (
       Feito com <Heart className="w-3 h-3 fill-blush text-blush" /> para o grande dia
     </p>
     <p className="font-body text-xs text-primary-foreground/40 mt-4">
-      19 de Setembro de 2026
+      30 de Abril de 2026
     </p>
   </footer>
 );
