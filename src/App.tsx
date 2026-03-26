@@ -10,33 +10,36 @@ import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
-useEffect(() => {
-  const ping = async () => {
-    try {
-      await fetch("https://wedding-website-mpek.onrender.com/ping", {
-        method: "GET",
-        mode: "no-cors"
-      });
-    } catch (e) {}
-  };
 
-  ping();
-}, []);
+const App = () => {
+  
+  useEffect(() => {
+    const ping = async () => {
+      try {
+        await fetch("https://wedding-website-mpek.onrender.com/ping", {
+          method: "GET",
+          mode: "no-cors"
+        });
+      } catch (e) {}
+    };
+  
+    ping();
+  }, []);
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/presentes" element={<Presentes />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/presentes" element={<Presentes />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  )
+};
 
 export default App;
