@@ -37,7 +37,6 @@ const GiftRegistry = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedGift, setSelectedGift] = useState<GiftItem | null>(null);
-  const [copied, setCopied] = useState(false);
 
   // Form state
   const [nome, setNome] = useState("");
@@ -86,19 +85,10 @@ const GiftRegistry = () => {
 
   useEffect(() => { fetchGifts(); }, [fetchGifts]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(PIX_KEY);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const handleConfirmAndSubmit = async () => {
     if (!nome.trim() || !selectedGift || !selectedGift.cotaValue) return;
 
     setSubmitting(true);
-
-    // 🔥 cria aba antecipadamente (evita bloqueio)
-    const newTab = window.open("", "_blank");
 
     try {
       const response = await fetch(`${API_URL}/create-payment`, {
@@ -122,10 +112,7 @@ const GiftRegistry = () => {
         setOpeningPayment(true);
 
         // 🔥 redireciona a aba criada
-        if (newTab) {
-          newTab.location.href = paymentLink;
-        } else {
-          // fallback
+        if (paymentLink) {
           window.open(paymentLink, "_blank");
         }
 
@@ -141,7 +128,6 @@ const GiftRegistry = () => {
       throw new Error("Link não retornado");
     } catch (err) {
       console.error(err);
-      if (newTab) newTab.close();
       alert("Erro ao gerar pagamento 😢");
     } finally {
       setSubmitting(false);
