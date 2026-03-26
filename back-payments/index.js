@@ -93,6 +93,14 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
+app.get("/ping", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Servidor ativo 🚀",
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("Servidor rodando 🚀");
 });

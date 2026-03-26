@@ -14,8 +14,8 @@ export async function criarLink(item) {
         description: item.nome
       }
     ],
-    redirect_url: "https://seusite.com/sucesso",
-    webhook_url: "https://seu-backend.com/webhook"
+    redirect_url: "https://wedding-website-olive-psi.vercel.app/",
+    webhook_url: "https://wedding-website-mpek.onrender.com/webhook"
   };
 
   const response = await axios.post(

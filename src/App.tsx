@@ -6,8 +6,22 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Presentes from "./pages/Presentes";
 import NotFound from "./pages/NotFound";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
+
+useEffect(() => {
+  const ping = async () => {
+    try {
+      await fetch("https://wedding-website-mpek.onrender.com/ping", {
+        method: "GET",
+        mode: "no-cors"
+      });
+    } catch (e) {}
+  };
+
+  ping();
+}, []);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
