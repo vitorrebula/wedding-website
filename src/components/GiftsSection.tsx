@@ -22,7 +22,7 @@ const GiftsSection = () => {
           </h2>
           <div className="w-16 h-px bg-gold mx-auto" />
           <p className="font-body text-muted-foreground max-w-lg mx-auto">
-            Contribua via PIX para ajudar Lucas & Rafa a realizarem seus sonhos juntos 💛
+            Contribua via PIX para ajudar Lucas & Rafa a realizarem seus sonhos juntos
           </p>
 
           <Link

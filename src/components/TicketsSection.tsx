@@ -47,7 +47,7 @@ const TicketsSection = () => {
           <h2 className="mt-2 font-display text-4xl md:text-5xl font-semibold text-foreground">RSVP & Ingressos</h2>
           <div className="mt-4 w-16 h-px bg-gold mx-auto" />
           <p className="mt-4 font-body text-muted-foreground max-w-lg mx-auto">
-            Escolha como deseja participar. A festa é por adesão — ir apenas à cerimônia é totalmente bem-vindo! 💒
+            Escolha como deseja participar. A festa é por adesão — ir apenas à cerimônia é totalmente bem-vindo!
           </p>
         </motion.div>
 

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import heroBg from "@/assets/lucs-e-rafa-2.jpeg";
 
-const WEDDING_DATE = new Date("2026-09-19T16:00:00");
+const WEDDING_DATE = new Date("2026-05-30T18:00:00");
 
 const calcTimeLeft = () => {
   const diff = WEDDING_DATE.getTime() - Date.now();
@@ -53,7 +53,7 @@ const HeroSection = () => {
           transition={{ delay: 0.6 }}
           className="mt-5 font-body text-sm tracking-[0.25em] text-white uppercase"
         >
-          19 · 09 · 2026
+          30 · 05 · 2026
         </motion.p>
 
         {/* Countdown */}
