@@ -14,7 +14,7 @@ export async function criarLink(item) {
         description: item.nome
       }
     ],
-    redirect_url: "https://wedding-website-olive-psi.vercel.app/",
+    redirect_url: "https://wedding-website-olive-psi.vercel.app/obrigado",
     webhook_url: "https://wedding-website-mpek.onrender.com/webhook"
   };
 

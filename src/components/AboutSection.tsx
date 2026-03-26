@@ -24,9 +24,7 @@ const AboutSection = () => {
             <Church className="w-12 h-12 mx-auto text-gold mb-6" />
             <h3 className="font-display text-2xl font-semibold text-foreground mb-4">Cerimônia Religiosa</h3>
             <p className="font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              O momento mais especial: a troca de votos de Lucas e Rafaela diante de Deus, 
-              família e amigos. Uma celebração tradicional, cheia de amor e emoção.
-            </p>
+              Queremos compartilhar com vocês o momento mais especial das nossas vidas: nossa troca de votos diante de Deus e de quem mais amamos. Será uma celebração cheia de tradição, amor e, claro, muita emoção!            </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">30/05/2026</span>
               <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">19h00</span>
@@ -62,15 +60,17 @@ const AboutSection = () => {
 
             <div className="mt-6 p-4 rounded-lg bg-club-dark/50 border border-neon-blue/20">
               <p className="font-body text-sm text-gold-light/60">
-                A festa é um evento <strong className="text-neon-pink">por adesão</strong> (ingresso pago). 
-                Comparecer apenas à cerimônia na igreja é totalmente bem-vindo! 
-              </p>
+                Para quem quiser estender a alegria com a gente, nossa festa será 
+                  <strong className="text-neon-pink"> por adesão</strong> (ingresso pago). 
+                  Sintam-se totalmente acolhidos para participar apenas da nossa cerimônia na igreja; 
+                  o importante para nós é o seu carinho!
+                </p>
             </div>
 
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <span className="px-3 py-1 rounded-full bg-neon-pink/10 text-neon-pink text-xs font-club font-medium border border-neon-pink/20"> Open Bar</span>
               <span className="px-3 py-1 rounded-full bg-neon-blue/10 text-neon-blue text-xs font-club font-medium border border-neon-blue/20"> Open Food</span>
-              <span className="px-3 py-1 rounded-full bg-neon-pink/10 text-neon-pink text-xs font-club font-medium border border-neon-pink/20"> DJ</span>
+              <span className="px-3 py-1 rounded-full bg-neon-pink/10 text-neon-pink text-xs font-club font-medium border border-neon-pink/20"> Momentos inesquecíveis</span>
             </div>
           </motion.div>
         </div>

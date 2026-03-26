@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Presentes from "./pages/Presentes";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
+import Obrigado from "./pages/Obrigado";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/presentes" element={<Presentes />} />
+            <Route path="/obrigado" element={<Obrigado />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

@@ -6,6 +6,7 @@ import LocationsSection from "@/components/LocationsSection";
 import TicketsSection from "@/components/TicketsSection";
 import GiftsSection from "@/components/GiftsSection";
 import Footer from "@/components/Footer";
+import PadrinhosMadrinhas from "@/components/PadrinhosMadrinhas";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <HeroSection />
       <VideoSection />
       <AboutSection />
+      <PadrinhosMadrinhas />
       <LocationsSection />
       <TicketsSection />
       <GiftsSection />

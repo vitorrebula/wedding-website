@@ -43,7 +43,7 @@ const TicketsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{display: "flex", justifyContent: "center"}}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
           {tickets.map((t, i) => {
             const Icon = t.icon;
             const isClub = t.variant === "club";
@@ -52,11 +52,10 @@ const TicketsSection = () => {
               <motion.div
                 key={t.title}
                 {...fadeUp}
-                style={{width: "300px"}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative rounded-2xl p-8 text-center border transition-transform hover:scale-[1.02] ${
+                className={`relative w-full max-w-[320px] rounded-2xl p-6 sm:p-8 text-center border transition-transform hover:scale-[1.02] ${
                   isClub
-                    ? "bg-club-dark border-neon-pink scale-[1.02]"
+                    ? "bg-club-dark border-neon-pink"
                     : "bg-card border-border"
                 }`}
               >
@@ -66,20 +65,44 @@ const TicketsSection = () => {
                   </span>
                 )}
 
-                <Icon className={`w-10 h-10 mx-auto mb-4 ${isClub ? "text-neon-pink" : "text-gold"}`} />
-                <h3 className={`font-display text-xl font-semibold mb-2 ${isClub ? "font-club text-neon-blue" : "text-foreground"}`}>
+                <Icon
+                  className={`w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 ${
+                    isClub ? "text-neon-pink" : "text-gold"
+                  }`}
+                />
+
+                <h3
+                  className={`font-display text-lg sm:text-xl font-semibold mb-2 ${
+                    isClub ? "font-club text-neon-blue" : "text-foreground"
+                  }`}
+                >
                   {t.title}
                 </h3>
-                <p className={`text-sm font-body mb-4 ${isClub ? "text-gold-light/60" : "text-muted-foreground"}`}>
+
+                <p
+                  className={`text-sm font-body mb-4 ${
+                    isClub ? "text-gold-light/60" : "text-muted-foreground"
+                  }`}
+                >
                   {t.description}
                 </p>
-                <p className={`text-3xl font-display font-bold mb-6 ${isClub ? "text-neon-pink" : "text-foreground"}`}>
+
+                <p
+                  className={`text-2xl sm:text-3xl font-display font-bold mb-6 ${
+                    isClub ? "text-neon-pink" : "text-foreground"
+                  }`}
+                >
                   {t.price}
                 </p>
 
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-2 mb-6 sm:mb-8">
                   {t.features.map((f) => (
-                    <li key={f} className={`text-sm font-body ${isClub ? "text-gold-light/50" : "text-muted-foreground"}`}>
+                    <li
+                      key={f}
+                      className={`text-sm font-body ${
+                        isClub ? "text-gold-light/50" : "text-muted-foreground"
+                      }`}
+                    >
                       ✓ {f}
                     </li>
                   ))}
@@ -89,7 +112,8 @@ const TicketsSection = () => {
                   href={EXTERNAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-block w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${ isClub
+                  className={`inline-block w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${
+                    isClub
                       ? "bg-neon-pink text-club-dark hover:opacity-90"
                       : "bg-secondary text-secondary-foreground hover:bg-accent"
                   }`}

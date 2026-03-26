@@ -340,7 +340,7 @@ const GiftRegistry = () => {
 
                   <button
                       onClick={handleConfirmAndSubmit}
-                      disabled={submitting}
+                      disabled={submitting || !nome}
                       className="w-full py-3 rounded-lg bg-gold text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" />
