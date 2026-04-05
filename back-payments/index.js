@@ -10,9 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/**
- * 🔹 1. Criar pagamento
- */
 app.post("/create-payment", async (req, res) => {
   try {
     const { pessoa, presente, valor } = req.body;
@@ -26,10 +23,8 @@ app.post("/create-payment", async (req, res) => {
       return res.status(400).json({ error: "Valor inválido" });
     }
 
-    // 🔥 transforma em centavos
     const valorCentavos = Math.round(valor * 100);
 
-    // 🔥 guarda contexto no order_nsu
     const order_nsu = `${pessoa}|${presente}|${valor}`;
 
     const payload = {
@@ -42,6 +37,7 @@ app.post("/create-payment", async (req, res) => {
           description: presente
         }
       ],
+      redirect_url: "https://lucas-e-rafa.com.br/obrigado",
       webhook_url: process.env.WEBHOOK_URL
     };
 
@@ -58,9 +54,6 @@ app.post("/create-payment", async (req, res) => {
   }
 });
 
-/**
- * 🔹 2. Webhook (quando pagamento for aprovado)
- */
 app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
@@ -73,10 +66,8 @@ app.post("/webhook", async (req, res) => {
       return res.sendStatus(400);
     }
 
-    // 🔥 recupera os dados que salvamos
     const [pessoa, presente, valor] = order_nsu.split("|");
 
-    // 🔥 chama seu App Script (igual hoje)
     await axios.post(process.env.APPS_SCRIPT_URL, {
       pessoa,
       presente,
