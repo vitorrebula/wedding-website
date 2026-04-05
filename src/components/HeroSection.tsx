@@ -43,7 +43,7 @@ const HeroSection = () => {
           transition={{ delay: 0.3 }}
           className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-black leading-tight"
         >
-          <span className="inline-flex items-center mx-3 md:mx-5" style={{fontWeight: 500}}>
+          <span className="inline-flex items-center mx-3 md:mx-5" style={{fontWeight: 100}}>
           Lucas
             &
           Rafaela
