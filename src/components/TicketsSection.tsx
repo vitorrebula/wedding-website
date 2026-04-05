@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Church, PartyPopper, Ticket } from "lucide-react";
 
-const EXTERNAL_URL = "https://example.com/ingressos"; // Replace with real URL
+const EXTERNAL_URL = "https://uticket.com.br/evento/comemoracao-casamento-lucas-e-rafa/01LX30ME6FLPI3"; // Replace with real URL
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -12,19 +12,11 @@ const fadeUp = {
 
 const tickets = [
   {
-    title: "Apenas Cerimônia",
-    price: "Gratuito",
-    icon: Church,
-    description: "Presença na celebração religiosa",
-    features: ["Cerimônia na Igreja", "Fotos com os noivos"],
-    variant: "classic" as const,
-  },
-  {
-    title: "Apenas Festa",
-    price: "R$ —",
+    title: "After party",
+    price: "R$ 69,00",
     icon: Ticket,
     description: "Direto pra balada",
-    features: ["Open Bar", "Open Food", "DJ & Pista de dança"],
+    features: ["P9/Ipanema Bar"],
     variant: "club" as const,
     badge: "OSS"
   },
@@ -43,7 +35,7 @@ const TicketsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+        <div className="flex justify-center">
           {tickets.map((t, i) => {
             const Icon = t.icon;
             const isClub = t.variant === "club";
@@ -52,27 +44,30 @@ const TicketsSection = () => {
               <motion.div
                 key={t.title}
                 {...fadeUp}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative w-full max-w-[320px] rounded-2xl p-6 sm:p-8 text-center border transition-transform hover:scale-[1.02] ${
-                  isClub
-                    ? "bg-club-dark border-neon-pink"
+                className={`
+                  relative w-full max-w-[360px] 
+                  rounded-2xl p-8 text-center border 
+                  transition-all duration-300 hover:scale-[1.03] hover:shadow-xl
+                  ${isClub 
+                    ? "bg-club-dark/90 border-neon-pink shadow-lg shadow-neon-pink/20 backdrop-blur-sm" 
                     : "bg-card border-border"
-                }`}
+                  }
+                `}
               >
                 {t.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-neon-pink text-primary-foreground text-xs font-body font-semibold">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-neon-pink text-primary-foreground text-xs font-body font-semibold shadow-md">
                     {t.badge}
                   </span>
                 )}
 
                 <Icon
-                  className={`w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 ${
+                  className={`w-10 h-10 mx-auto mb-4 ${
                     isClub ? "text-neon-pink" : "text-gold"
                   }`}
                 />
 
                 <h3
-                  className={`font-display text-lg sm:text-xl font-semibold mb-2 ${
+                  className={`font-display text-xl font-semibold mb-2 ${
                     isClub ? "font-club text-neon-blue" : "text-foreground"
                   }`}
                 >
@@ -81,26 +76,26 @@ const TicketsSection = () => {
 
                 <p
                   className={`text-sm font-body mb-4 ${
-                    isClub ? "text-gold-light/60" : "text-muted-foreground"
+                    isClub ? "text-gold-light/70" : "text-muted-foreground"
                   }`}
                 >
                   {t.description}
                 </p>
 
                 <p
-                  className={`text-2xl sm:text-3xl font-display font-bold mb-6 ${
+                  className={`text-3xl font-display font-bold mb-6 ${
                     isClub ? "text-neon-pink" : "text-foreground"
                   }`}
                 >
                   {t.price}
                 </p>
 
-                <ul className="space-y-2 mb-6 sm:mb-8">
+                <ul className="space-y-2 mb-8">
                   {t.features.map((f) => (
                     <li
                       key={f}
                       className={`text-sm font-body ${
-                        isClub ? "text-gold-light/50" : "text-muted-foreground"
+                        isClub ? "text-gold-light/60" : "text-muted-foreground"
                       }`}
                     >
                       ✓ {f}
@@ -112,13 +107,16 @@ const TicketsSection = () => {
                   href={EXTERNAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-block w-full py-3 rounded-lg font-body font-semibold text-sm transition-colors ${
-                    isClub
-                      ? "bg-neon-pink text-club-dark hover:opacity-90"
+                  className={`
+                    inline-block w-full py-3 rounded-lg font-body font-semibold text-sm 
+                    transition-all duration-300
+                    ${isClub
+                      ? "bg-neon-pink text-club-dark hover:opacity-90 hover:shadow-lg hover:shadow-neon-pink/40"
                       : "bg-secondary text-secondary-foreground hover:bg-accent"
-                  }`}
+                    }
+                  `}
                 >
-                  Selecionar
+                  Garantir ingresso
                 </a>
               </motion.div>
             );

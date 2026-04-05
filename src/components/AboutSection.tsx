@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Church, PartyPopper, Sparkles } from "lucide-react";
-import partyBg from "@/assets/party-bg.jpg";
+import { Church } from "lucide-react";
+import partyBg from "@/assets/festa.jpeg";
+import lr from "@/assets/l&r.jpeg";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -12,7 +13,7 @@ const fadeUp = {
 const AboutSection = () => {
   return (
     <section id="about" className="relative">
-      <div className="section-padding bg-background">
+      <div className="section-padding bg-secondary/50">
         <div className="container mx-auto max-w-4xl">
           <motion.div {...fadeUp} className="text-center mb-12">
             <span className="text-sm font-body tracking-[0.3em] uppercase text-gold">Parte 1</span>
@@ -24,11 +25,10 @@ const AboutSection = () => {
             <Church className="w-12 h-12 mx-auto text-gold mb-6" />
             <h3 className="font-display text-2xl font-semibold text-foreground mb-4">Cerimônia Religiosa</h3>
             <p className="font-body text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Queremos compartilhar com vocês o momento mais especial das nossas vidas: nossa troca de votos diante de Deus e de quem mais amamos. Será uma celebração cheia de tradição, amor e, claro, muita emoção!            </p>
+              Convidamos você para o momento mais especial de nossas vidas: nosso casamento. Venham com o coração cheio de amor e bençãos para testemunhar nossa troca de votos!       </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">30/05/2026</span>
-              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">19h00</span>
-              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">Aberto a todos</span>
+              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">30/04/2026</span>
+              <span className="px-3 py-1 rounded-full bg-sage-light text-sage text-xs font-body font-medium">19h30</span>
             </div>
           </motion.div>
         </div>
@@ -48,14 +48,16 @@ const AboutSection = () => {
           </motion.div>
 
           <motion.div {...fadeUp} className="bg-club-surface/60 backdrop-blur-md rounded-2xl border border-neon-pink/20 p-8 md:p-12 text-center">
-            <PartyPopper className="w-12 h-12 mx-auto text-neon-pink mb-6" />
+            <img src={lr} alt="L&R" style={{width: '70px', display: "block", margin: "0 auto"}} />
             <h3 className="font-club text-2xl font-bold text-neon-blue mb-4 flex items-center justify-center gap-2">
               After Party
             </h3>
             <p className="font-body text-gold-light/80 leading-relaxed max-w-2xl mx-auto">
-              Depois da cerimônia, a noite não acaba! Uma festa estilo balada com 
-              <strong className="text-neon-pink"> Open Bar</strong> e 
-              <strong className="text-neon-blue"> Open Food</strong> pra comemorar em grande estilo.
+              Depois da cerimônia, vamos comemorar o casamento em uma balada, onde receberemos os cumprimentos. 
+
+              Os ingressos para entrada são vendidos antecipadamente.
+
+              <strong className="text-neon-blue"> Vamos adorar a sua presença!</strong> Mas sinta-se a vontade para ir apenas para cerimônia, se preferir.
             </p>
 
             <div className="mt-6 p-4 rounded-lg bg-club-dark/50 border border-neon-blue/20">

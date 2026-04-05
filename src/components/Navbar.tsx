@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Início", href: "#home" },
   { label: "O Grande Dia", href: "#about" },
   { label: "Localização", href: "#locations" },
+  { label: "Padrinhos & Madrinhas", href: "#padrinhos" },
   { label: "Ingressos", href: "#tickets" },
   { label: "Presentes", href: "#gifts" },
 ];
