@@ -128,8 +128,8 @@ const GiftRegistry = () => {
     <section id="gifts" className="section-padding bg-background py-32">
       <div className="container mx-auto max-w-6xl px-6">
         <motion.div {...fadeUp} className="text-center mb-24">
-          <span className="text-[10px] font-body tracking-[0.5em] uppercase text-gold/60 block mb-4">Registry</span>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground font-medium uppercase tracking-tight">Lista de Presentes</h2>
+          <span className="text-[10px] font-body tracking-[0.5em] uppercase text-gold/60 block mb-4">Lista de</span>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground font-medium uppercase tracking-tight">Presentes</h2>
           <div className="mt-8 w-8 h-px bg-gold/30 mx-auto" />
         </motion.div>
 
