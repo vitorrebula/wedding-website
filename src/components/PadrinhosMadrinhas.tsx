@@ -8,19 +8,30 @@ const fadeUp = {
 };
 
 const madrinhas = [
-  "Ana Carolina Rebula",
-  "Gabrielle Rebula",
   "Raissa Campos",
-  "Verônica Porto",
-  "Fernanda Costa",
+  "Verônica Porto Lima",
+  "Mariana Abritta",
+  "Ana Barbara",
+  "Gabrielle Rébula",
+  "Ana Carolina Rébula",
+  "Maria Eduarda Coelho",
+  "Rafaela Coelho",
+  "Isadora Porto Lima",
+  "Rebeca Camile",
 ];
 
 const padrinhos = [
-  "Dom Malvanel",
-  "Gabriel Torres",
   "Vitor Rebula",
-  "Levado",
-  "Diganão",
+  "Gabriel Torres",
+  "Matheus Torres",
+  "Luan Sander",
+  "André Marques",
+  "Emanuel Moura",
+  "Daniel Gomes",
+  "Marcus Coelho",
+  "Edson Junio",
+  "Gustavo Nicomedes",
+  "Rodrigo Amaral",
 ];
 
 const PadrinhosMadrinhas = () => {
@@ -28,9 +39,6 @@ const PadrinhosMadrinhas = () => {
     <section id="padrinhos" className="section-padding bg-background">
       <div className="container mx-auto max-w-4xl">
         <motion.div {...fadeUp} className="text-center mb-16">
-          <span className="text-sm font-body tracking-[0.3em] uppercase text-gold">
-            Com carinho
-          </span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-semibold text-foreground">
             Nossos Padrinhos
           </h2>

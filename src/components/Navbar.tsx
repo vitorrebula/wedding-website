@@ -4,11 +4,11 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Início", href: "#home" },
+  { label: "Presentes", href: "#gifts" },
   { label: "O Grande Dia", href: "#about" },
   { label: "Localização", href: "#locations" },
-  { label: "Padrinhos & Madrinhas", href: "#padrinhos" },
   { label: "Ingressos", href: "#tickets" },
-  { label: "Presentes", href: "#gifts" },
+  { label: "Padrinhos & Madrinhas", href: "#padrinhos" },
 ];
 
 const Navbar = () => {
