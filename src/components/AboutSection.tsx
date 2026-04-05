@@ -33,7 +33,7 @@ const AboutSection = () => {
             <div className="mt-8 flex justify-center gap-6 border-t border-border pt-8 max-w-xs mx-auto">
               <span className="text-sm font-body font-medium text-gold">30/04/2026</span>
               <span className="w-px h-4 bg-border" />
-              <span className="text-sm font-body font-medium text-gold">19h30</span>
+              <span className="text-sm font-body font-medium text-gold">18h30</span>
             </div>
           </motion.div>
         </div>
@@ -68,7 +68,7 @@ const AboutSection = () => {
               <p className="font-body text-sm text-white/50">
                 Os ingressos para entrada são vendidos antecipadamente.
                 <br />
-                <strong className="text-white/80">Vamos adorar a sua presença!</strong> Mas sinta-se à vontade para ir apenas para cerimônia, se preferir.
+                <strong className="text-white/80">Vamos adorar a sua presença!</strong> <br /><br /> Mas sinta-se à vontade para ir apenas para cerimônia, se preferir.
               </p>
             </div>
 
