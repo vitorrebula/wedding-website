@@ -6,39 +6,40 @@
 
 @layer base {
   :root {
-    --background: 30 20% 97%;
-    --foreground: 30 10% 15%;
+    /* Base: Rosa Bem Clarinho / Off-white */
+    --background: 350 30% 98%;
+    --foreground: 350 20% 15%;
 
-    --card: 30 20% 99%;
-    --card-foreground: 30 10% 15%;
+    --card: 350 30% 99%;
+    --card-foreground: 350 20% 15%;
 
-    --popover: 30 20% 99%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 350 30% 99%;
+    --popover-foreground: 350 20% 15%;
 
-    --primary: 30 30% 25%;
-    --primary-foreground: 30 20% 97%;
+    --primary: 350 25% 35%; 
+    --primary-foreground: 350 30% 98%;
 
-    --secondary: 30 15% 92%;
-    --secondary-foreground: 30 10% 25%;
+    --secondary: 350 40% 95%;
+    --secondary-foreground: 350 25% 25%;
 
-    --muted: 30 10% 93%;
-    --muted-foreground: 30 8% 50%;
+    --muted: 350 20% 94%;
+    --muted-foreground: 350 10% 50%;
 
-    --accent: 30 40% 85%;
-    --accent-foreground: 30 30% 20%;
+    --accent: 350 50% 92%;
+    --accent-foreground: 350 40% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 30 30% 25%;
+    --border: 350 20% 90%;
+    --input: 350 20% 90%;
+    --ring: 350 25% 35%;
 
     --radius: 0.5rem;
 
-    /* Wedding-specific tokens */
-    --gold: 38 60% 55%;
-    --gold-light: 38 50% 80%;
+    /* Wedding-specific tokens: Rosa mais fechado (substituindo o dourado) */
+    --gold: 350 40% 70%;       /* Escurecido de 85% para 70% */
+    --gold-light: 350 35% 85%; /* Escurecido de 94% para 85% */
     --sage: 140 15% 55%;
     --sage-light: 140 15% 90%;
     --blush: 350 30% 85%;
@@ -50,14 +51,14 @@
     --club-dark: 250 30% 10%;
     --club-surface: 250 25% 15%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 350 30% 99%;
+    --sidebar-foreground: 350 15% 30%;
+    --sidebar-primary: 350 25% 35%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 350 40% 96%;
+    --sidebar-accent-foreground: 350 25% 20%;
+    --sidebar-border: 350 20% 92%;
+    --sidebar-ring: 350 25% 35%;
   }
 }
 
@@ -88,6 +89,7 @@
     font-family: 'Space Grotesk', sans-serif;
   }
 
+  /* Gradiente em Rosa Rosé */
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
