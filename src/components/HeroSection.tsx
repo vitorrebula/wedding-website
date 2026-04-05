@@ -85,7 +85,7 @@ const HeroSection = () => {
           transition={{ delay: 1.5 }}
           className="mt-16 animate-float"
         >
-          <a href="#video" className="text-muted-foreground hover:text-foreground transition-colors">
+          <a href="#gifts" className="text-muted-foreground hover:text-foreground transition-colors">
             <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
