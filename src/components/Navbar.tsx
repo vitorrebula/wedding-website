@@ -6,8 +6,8 @@ const links = [
   { label: "Início", href: "#home" },
   { label: "Presentes", href: "#gifts" },
   { label: "O Grande Dia", href: "#about" },
-  { label: "Localização", href: "#locations" },
   { label: "Ingressos", href: "#tickets" },
+  { label: "Localização", href: "#locations" },
   { label: "Padrinhos & Madrinhas", href: "#padrinhos" },
 ];
 
