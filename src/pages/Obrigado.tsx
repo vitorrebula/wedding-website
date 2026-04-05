@@ -4,77 +4,70 @@ import { Link } from "react-router-dom";
 
 const Obrigado = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-background px-6 text-center overflow-hidden relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gold/5 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-blush/10 blur-3xl" />
-      </div>
-
+    // Fundo no seu tom favorito #faf0f1 para um encerramento quente e elegante
+    <div className="h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden relative">
+      
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-lg space-y-6"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10 max-w-lg"
       >
+        {/* Ícone Minimalista: Sem círculos, apenas o traço fino */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3, type: "spring" }}
-          className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-10"
         >
-          <Heart className="w-8 h-8 text-gold fill-gold/30" />
+          <Heart className="w-10 h-10 text-gold/40 mx-auto stroke-[1.2]" />
+        </motion.div>
+
+        <motion.div className="space-y-8">
+          <div className="space-y-3">
+            <span className="text-[10px] font-body tracking-[0.5em] uppercase text-gold font-bold block">
+              De coração
+            </span>
+            <h1 className="font-display text-4xl md:text-5xl font-medium text-foreground uppercase tracking-tight">
+              Muito obrigado
+            </h1>
+            <div className="w-12 h-px bg-gold/30 mx-auto mt-6" />
+          </div>
+
+          <div className="space-y-6 max-w-md mx-auto">
+            <p className="font-body text-sm text-muted-foreground leading-relaxed uppercase tracking-widest opacity-80">
+              Ficamos muito felizes com o seu presente. Cada gesto nos
+              ajuda a construir o começo da nossa vida juntos.
+            </p>
+            
+            <p className="font-body text-sm text-foreground leading-relaxed uppercase tracking-[0.15em] font-medium">
+              O maior presente é a sua <span className="text-gold">presença</span> ao nosso
+              lado nesse dia tão especial.
+            </p>
+
+            <div className="pt-8">
+              <p className="font-display text-xl text-gold italic tracking-wide">
+                Nos vemos no altar
+              </p>
+              <p className="font-display text-sm text-foreground/40 mt-4 uppercase tracking-[0.4em]">
+                Lucas & Rafa
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="space-y-4"
-        >
-          <span className="text-sm font-body tracking-[0.3em] uppercase text-gold">
-            De coração
-          </span>
-          <h1 className="font-display text-3xl md:text-4xl font-semibold text-foreground">
-            Muito obrigado! 
-          </h1>
-          <div className="w-12 h-px bg-gold mx-auto" />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="space-y-4"
-        >
-          <p className="font-body text-muted-foreground leading-relaxed">
-            Ficamos muito felizes com o seu presente! Cada gesto de carinho nos
-            emociona e nos ajuda a construir o começo da nossa vida juntos.
-          </p>
-          <p className="font-body text-muted-foreground leading-relaxed">
-            Mas queremos que você saiba: o maior presente que podemos receber é
-            a sua <strong className="text-foreground">presença</strong> ao nosso
-            lado nesse dia tão especial. Ter você com a gente vai fazer tudo
-            ainda mais inesquecível.
-          </p>
-          <p className="font-body text-foreground font-medium italic">
-            Nos vemos no altar! 🤍
-          </p>
-          <p className="font-display text-lg text-gold mt-2">
-            — Lucas & Rafa
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="mt-16"
         >
           <Link
             to="/presentes"
-            className="inline-flex items-center gap-2 mt-4 text-sm font-body text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-3 text-[10px] font-body text-muted-foreground uppercase tracking-[0.3em] hover:text-gold transition-all group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Voltar para presentes
+            <ArrowLeft className="w-3 h-3 transition-transform group-hover:-translate-x-1" />
+            [ Voltar ]
           </Link>
         </motion.div>
       </motion.div>
