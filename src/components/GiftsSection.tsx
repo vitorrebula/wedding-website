@@ -22,7 +22,9 @@ const GiftsSection = () => {
           </h2>
           <div className="w-16 h-px bg-gold mx-auto" />
           <p className="font-body text-muted-foreground max-w-lg mx-auto">
-            Ficaremos muito felizes em ter vocês ao nosso lado. <br /><br /> Se desejar nos presentear, criamos uma lista para nos ajudar a construir nosso novo lar e realizar nossos primeiros sonhos como casal.          </p>
+            O mais importante é a presença de vocês!<br /><br />
+
+            Mas, caso queiram nos presentear, criamos uma lista pra nos ajudar a construir nosso novo lar e realizar mais alguns sonhos como casal.                    </p>
           <Link
             to="/presentes"
             className="inline-flex items-center gap-3 mt-4 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity"
