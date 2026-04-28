@@ -12,7 +12,7 @@ const fadeUp = {
 
 const ticketData = {
   title: "After party",
-  price: "R$ 69,00",
+  price: "R$",
   icon: Ticket,
   // description: "Direto pra balada",
   features: ["P9 / Ipanema Bar"],

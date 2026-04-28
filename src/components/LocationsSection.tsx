@@ -40,6 +40,9 @@ const LocationsSection = () => {
               </p>
               <div className="pt-6 border-t border-border flex flex-col items-center gap-2">
                 <p className="font-body text-[11px] uppercase tracking-[0.2em] text-gold font-bold flex items-center justify-center gap-2">
+                  Traje passeio completo
+                </p>
+                <p className="font-body text-[11px] uppercase tracking-[0.2em] text-gold font-bold flex items-center justify-center gap-2">
                   <MapPin className="w-3 h-3" /> Paróquia N.S. de Guadalupe
                 </p>
               </div>
@@ -66,6 +69,9 @@ const LocationsSection = () => {
                 Local da celebração
               </p>
               <div className="pt-6 border-t border-border flex flex-col items-center gap-2">
+                <p className="font-body text-[11px] uppercase tracking-[0.2em] text-gold font-bold flex items-center justify-center gap-2">
+                  Traje passeio completo
+                </p>
                 <p className="font-body text-[11px] uppercase tracking-[0.2em] text-gold font-bold flex items-center justify-center gap-2">
                   <MapPin className="w-3 h-3" /> P9/Ipanema Bar
                 </p>
